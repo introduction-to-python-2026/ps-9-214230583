@@ -1,2 +1,2 @@
 path: "spongebob.joblib
-features: ['MDVP:Fo(Hz)', 'MDVP:Fhi(Hz)']
+selected_features = ['MDVP:Shimmer(dB)', 'MDVP:Fo(Hz)']
