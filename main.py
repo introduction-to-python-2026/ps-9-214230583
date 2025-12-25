@@ -10,7 +10,7 @@ display(df.head())
 
 print(df.columns)
 
-input_features = ['MDVP:Fo(Hz)', 'MDVP:Fhi(Hz)']
+input_features = ['MDVP:Shimmer(dB)', 'MDVP:Fo(Hz)']
 output_feature = 'status'
 
 X = df[input_features]
