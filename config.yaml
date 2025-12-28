@@ -1,4 +1,2 @@
-path: "Tzvi.joblib"
-selected_features:
-  - PPE
-  - DFA
+path: "Tzvi.joblib":
+selected_features = ['PPE', 'DFA']
