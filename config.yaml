@@ -1,2 +1,2 @@
 path: "spongebob.joblib"
-selected_features = ['PPE', 'DFA']
+selected_features = [x, y]
