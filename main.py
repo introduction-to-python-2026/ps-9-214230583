@@ -4,54 +4,34 @@
 import lab_setup_do_not_edit
 
 import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
 
-df = pd.read_csv('/content/parkinsons.csv')
-display(df.head())
+df = pd.read_csv('parkinsons.csv')
+df = df.dropna()
+df.head()
 
-print(df.columns)
+x = df[['PPE', 'DFA']]
+y = df['status']
 
-
-
+import sklearn
 from sklearn.preprocessing import MinMaxScaler
 
-scaler = MinMaxScaler()
-X_scaled = scaler.fit_transform(X)
+scaler = MinMaxScaler(feature_range=(0, 1))
+x = scaler.fit_transform(x)
 
-print("Scaled input features (first 5 rows):\n", X_scaled[:5])
-
-from sklearn.model_selection import train_test_split
-
-X_train, X_val, y_train, y_val = train_test_split(X_scaled, y, test_size=0.2, random_state=42)
-
-print(f"Training set size: {X_train.shape[0]} samples")
-print(f"Validation set size: {X_val.shape[0]} samples")
+x_train, x_test, y_train, y_test = sklearn.model_selection.train_test_split(x, y, test_size=0.2, random_state=42)
 
 from sklearn.svm import SVC
+model = SVC()
+model.fit(x_train, y_train)
+
 from sklearn.metrics import accuracy_score
 
-# Initialize the Support Vector Machine classifier
-model = SVC(random_state=42)
-
-# Train the model
-model.fit(X_train, y_train)
-
-print("Model training complete.")
-
-# 6. Test the accuracy:
-# Evaluate the model's accuracy on the test set. Ensure that the accuracy is at least 0.8.
-
-# Make predictions on the validation set
-y_pred = model.predict(X_val)
-
-# Calculate accuracy
-accuracy = accuracy_score(y_val, y_pred)
-
-print(f"Model Accuracy: {accuracy:.2f}")
-
-if accuracy >= 0.8:
-    print("Accuracy target of 0.8 met!")
-else:
-    print("Accuracy target of 0.8 not met. Consider adjusting features or model parameters.")
+y_pred = model.predict(x_test)
+accuracy = accuracy_score(y_test, y_pred)
+print(f'Accuracy: {accuracy}')
 
 import joblib
 
