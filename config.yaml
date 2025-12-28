@@ -1,4 +1,4 @@
 path: "Tzvi.joblib"
-features:
+selected_features:
   - PPE
   - DFA
