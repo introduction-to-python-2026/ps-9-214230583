@@ -12,8 +12,6 @@ df = pd.read_csv('parkinsons.csv')
 df = df.dropna()
 df.head()
 
-x = df[['PPE', 'DFA']]
-y = df['status']
 
 import sklearn
 from sklearn.preprocessing import MinMaxScaler
