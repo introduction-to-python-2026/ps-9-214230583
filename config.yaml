@@ -1,2 +1,2 @@
-path: "spongebob.joblib"
+path: "Spongebob.joblib"
 selected_features = ['MDVP:Shimmer(dB)', 'MDVP:Fo(Hz)']
